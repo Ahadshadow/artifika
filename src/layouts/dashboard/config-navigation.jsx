@@ -10,32 +10,37 @@ const navConfig = [
   {
     title: 'dashboard',
     path: '/',
-    icon: icon('ic_analytics'),
+    icon: icon('dashboard'),
   },
   {
-    title: 'user',
+    title: 'Conversation History',
     path: '/user',
-    icon: icon('ic_user'),
+    icon: icon('chat'),
   },
   {
-    title: 'product',
-    path: '/products',
-    icon: icon('ic_cart'),
+    title: 'Leads',
+    // path: '/products',
+    icon: icon('lead'),
   },
   {
-    title: 'blog',
-    path: '/blog',
-    icon: icon('ic_blog'),
+    title: 'Feedbacks',
+    // path: '/blog',
+    icon: icon('feedback'),
   },
   {
-    title: 'login',
-    path: '/login',
-    icon: icon('ic_lock'),
+    title: 'Sources',
+    // path: '/login',
+    icon: icon('source'),
   },
   {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
+    title: 'Settings / Appearance',
+    // path: '/login',
+    icon: icon('setting'),
+  },
+  {
+    title: 'Preview',
+    // path: '/login',
+    icon: icon('preview'),
   },
 ];
 

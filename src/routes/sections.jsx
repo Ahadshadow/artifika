@@ -23,10 +23,10 @@ export default function Router() {
         </DashboardLayout>
       ),
       children: [
-        { element: <IndexPage />, index: true },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { element: "", index: true },
+        { path: 'user', element: "" },
+        { path: 'products', element: "" },
+        { path: 'blog', element: "" },
       ],
     },
     {

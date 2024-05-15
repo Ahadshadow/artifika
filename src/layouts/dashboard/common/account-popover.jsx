@@ -1,30 +1,26 @@
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
-import { alpha } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
 import { account } from 'src/_mock/account';
 
+import SvgColor from 'src/components/svg-color';
+
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
-    icon: 'eva:home-fill',
+    label: 'Support',
+    icon: 'assets/icons/navbar/support.png',
   },
   {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-  },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
+    label: 'Log out',
+    icon: 'assets/icons/navbar/logout.png',
   },
 ];
 
@@ -43,29 +39,10 @@ export default function AccountPopover() {
 
   return (
     <>
-      <IconButton
-        onClick={handleOpen}
-        sx={{
-          width: 40,
-          height: 40,
-          background: (theme) => alpha(theme.palette.grey[500], 0.08),
-          ...(open && {
-            background: (theme) =>
-              `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
-          }),
-        }}
-      >
-        <Avatar
-          src={account.photoURL}
-          alt={account.displayName}
-          sx={{
-            width: 36,
-            height: 36,
-            border: (theme) => `solid 2px ${theme.palette.background.default}`,
-          }}
-        >
-          {account.displayName.charAt(0).toUpperCase()}
-        </Avatar>
+      <IconButton onClick={handleOpen}  disableRipple disableFocusRipple>
+        <Box component="span" sx={{ width: 25, height: 25, mr: 1.5 }}>
+          <SvgColor src="/assets/icons/navbar/profile.svg" sx={{ width: 25, height: 25 }} />
+        </Box>
       </IconButton>
 
       <Popover
@@ -80,36 +57,42 @@ export default function AccountPopover() {
             mt: 1,
             ml: 0.75,
             width: 200,
+            borderColor: '#DDE2E4', 
+            borderStyle: 'solid',
+            borderWidth: 1, 
+            boxShadow: "none",
+            borderRadius:"15px"
           },
         }}
       >
-        <Box sx={{ my: 1.5, px: 2 }}>
-          <Typography variant="subtitle2" noWrap>
+        <Box sx={{ my: 1.5, px: 2, display: 'flex', alignItems: 'center' }}>
+          <Box>
+            <img src={account.displayPhoto} alt="profile" />
+          </Box>
+          <Typography variant="body2" sx={{ pl: 2.5 }}>
             {account.displayName}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
           </Typography>
         </Box>
 
-        <Divider sx={{ borderStyle: 'dashed' }} />
+        <Divider sx={{ borderStyle: 'solid',borderColor:"#DDE2E4" }} />
 
         {MENU_OPTIONS.map((option) => (
           <MenuItem key={option.label} onClick={handleClose}>
-            {option.label}
+            <Box
+              sx={{
+                my: 0.5,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+              }}
+            >
+              <img src={option.icon} alt={option.label} style={{ width: 20, height: 20 }} />
+              <Typography variant="body2" sx={{ pl: 2.5 }}>
+                {option.label}
+              </Typography>
+            </Box>
           </MenuItem>
         ))}
-
-        <Divider sx={{ borderStyle: 'dashed', m: 0 }} />
-
-        <MenuItem
-          disableRipple
-          disableTouchRipple
-          onClick={handleClose}
-          sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
-        >
-          Logout
-        </MenuItem>
       </Popover>
     </>
   );
