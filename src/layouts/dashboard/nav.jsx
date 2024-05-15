@@ -19,7 +19,7 @@ import { RouterLink } from 'src/routes/components';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 // import { account } from 'src/_mock/account';
-// import Logo from 'src/assets/images/artifika.png';
+import Logo from 'src/assets/images/artifika.png';
 
 import Scrollbar from 'src/components/scrollbar';
 
@@ -56,21 +56,26 @@ export default function Nav({ openNav, onCloseNav }) {
           height: 1,
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor:"#fff",
-          mt:10,
-          borderRight:"1px solid #DDE2E4"
+          backgroundColor: '#fff',
+          mt: upLg ? 10 : 2,
+          borderRight: '1px solid #DDE2E4',
         },
       }}
     >
       {/* <Logo sx={{ mt: 3, ml: 4 }} /> */}
-      {/* <Box sx={{ width: '153px', mt: 2, ml: 2, mb: 2.75 }}>
-        <img src={Logo} alt="logo" />
-      </Box>
-      <Divider sx={{ borderStyle: 'solid' }} /> */}
+      {!upLg && (
+        <Box sx={{ width: '153px', ml: 2, mb: 2.75 }}>
+          <img src={Logo} alt="logo" />
+        </Box>
+      )}
+      {/* <Divider sx={{ borderStyle: 'solid' }} /> */}
 
       {/* {renderAccount} */}
       <Box sx={{ mt: 2, ml: 3, mb: 3 }}>
-        <Typography variant="body2" sx={{ fontWeight: 'fontWeightMedium', color: 'primary.main', mb: 1 }}>
+        <Typography
+          variant="body2"
+          sx={{ fontWeight: 'fontWeightMedium', color: 'primary.main', mb: 1 }}
+        >
           Chatbot name
         </Typography>
         <Box
@@ -91,10 +96,7 @@ export default function Nav({ openNav, onCloseNav }) {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{pl:1}}>
-      {renderMenu}
-
-      </Box>
+      <Box sx={{ pl: 1 }}>{renderMenu}</Box>
 
       {/* <Box sx={{ flexGrow: 1 }} /> */}
 
